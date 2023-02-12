@@ -17,7 +17,7 @@ const ProductDetails = () => {
     }
   
     getData()
-  },[])
+  },[id])
 
   const edit = () => {
     navigate(`/product/${id}/edit`)
@@ -25,13 +25,13 @@ const ProductDetails = () => {
   
 
   return (
-    <div>
-        <h1>Detalles del Producto</h1>      
-        <p>nombre: {product.title}</p>
-        <p>Precio: {product.price}$</p>
-        <p>Detalles: {product.description}</p>
-        <button onClick={edit}>Editar</button>
-    </div>
+    <div className="p-5 bg-gray-50">
+        <h1 className="text-2xl font-bold mb-5">Detalles del Producto</h1>      
+        <p className="text-lg">Nombre: {product.title}</p>
+        <p className="text-lg">Precio: {product.price}$</p>
+        <p className="text-lg mb-5">Detalles: {product.description}</p>
+        <button className="bg-blue-500 p-2 text-white rounded" onClick={edit}>Editar</button>
+</div>
   )
 }
 

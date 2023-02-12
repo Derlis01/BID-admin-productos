@@ -3,6 +3,7 @@ import Formik from "./Formik";
 import * as Yup from "yup";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const fields = [
   { name: "title", label: "Producto", type: "text" },
@@ -18,6 +19,7 @@ const validationSchema = Yup.object().shape({
 
 const UpdateForm = () => {
   const { id } = useParams();
+  const navigate = useNavigate()
 
   const [initialValues, setInitialValue] = useState({
     title: "",
@@ -32,19 +34,20 @@ const UpdateForm = () => {
       try {
         const res = await axios.get(`http://localhost:8000/product/${id}`);
         setInitialValue({
-          ...initialValues,
           title: res.data.title,
           price: res.data.price,
           description: res.data.description,
         });
         setIsLoading(false);
+        console.log('loop2')
       } catch (error) {
         console.error(error);
       }
     };
-
+  
     fetchData();
-  }, []);
+  }, [id]);
+
 
   const updateProduct = async ({ title, price, description }) => {
     try {
@@ -54,6 +57,7 @@ const UpdateForm = () => {
         description: description,
       });
       console.log(res);
+      navigate(`/product/${id}`)
     } catch (err) {
       console.log(err);
     }
