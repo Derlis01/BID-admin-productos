@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const ProductUpdate = () => {
 
@@ -8,7 +8,6 @@ const ProductUpdate = () => {
     const [newname, setNewName] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
-    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`http://localhost:8000/product/${id}`)
@@ -27,15 +26,6 @@ const ProductUpdate = () => {
             description: description
         })
             .then(res => console.log(res));
-    }
-
-    const deleteProduct = e => {
-        e.preventDefault();
-        axios.delete(`http://localhost:8000/delete/${id}`)
-        .then(res => {
-            console.log(res);
-            navigate('/')
-        });
     }
 
     return (

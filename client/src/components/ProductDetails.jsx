@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import DeleteButtom from './DeleteButtom'
 
 const ProductDetails = () => {
 
@@ -31,6 +32,7 @@ const ProductDetails = () => {
         <p className="text-lg">Precio: {product.price}$</p>
         <p className="text-lg mb-5">Detalles: {product.description}</p>
         <button className="bg-blue-500 p-2 text-white rounded" onClick={edit}>Editar</button>
+        <DeleteButtom id={id} />
 </div>
   )
 }

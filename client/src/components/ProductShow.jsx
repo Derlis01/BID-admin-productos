@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import DeleteButtom from "./DeleteButtom"
 import './productShow.css'
 
 const ProductShow = ({ product, deleteProduct }) => {
@@ -16,9 +17,7 @@ const ProductShow = ({ product, deleteProduct }) => {
         </Link>
       </div>
       <div>
-        <button className="bg-red-500 text-white py-1 px-2 rounded hover:bg-red-700" onClick={() => deleteProduct(prod._id)}>
-          Eliminar
-        </button>
+        <DeleteButtom id={prod._id} />
       </div>
     </div>
   )) : '' }
